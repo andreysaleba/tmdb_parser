@@ -3,9 +3,13 @@ import { useDispatch } from 'react-redux';
 import Pagination from '@mui/material/Pagination';
 import { setPage } from '../../effects/films/filmsSlice';
 
-const Component = ({ page }) => {
+interface IComponent {
+  page: number
+}
+
+const Component: React.FC<IComponent> = ({ page }) => {
   const dispatch = useDispatch();
-  const paginationHandler = (page) => {
+  const paginationHandler = (page: number) => {
     dispatch(setPage(page));
   };
   return <Pagination page={page} count={25} onChange={(_, page) => paginationHandler(page)} />;

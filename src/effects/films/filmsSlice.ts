@@ -1,14 +1,15 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import httpRequest from '../../utils/axios';
+import { FilmState, IData } from './type';
 
-const initialState = {
+const initialState: FilmState = {
   status: 'idle',
   films: [],
   page: 1,
   sortBy: 'popularity.desc',
 };
 
-export const fetchFilms = createAsyncThunk('auth/fetchFilms', async (data) => {
+export const fetchFilms = createAsyncThunk('auth/fetchFilms', async (data: IData) => {
   try {
     const params = {
       sort_by: data.sortBy,
@@ -40,7 +41,6 @@ export const filmsSlice = createSlice({
       .addCase(fetchFilms.fulfilled, (state, action) => {
         state.status = 'idle';
         state.films = action.payload;
-        state.error = '';
       })
       .addCase(fetchFilms.rejected, (state, action) => {
         state.status = 'failed';

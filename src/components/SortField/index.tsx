@@ -25,7 +25,7 @@ const Component = () => {
   const ref = useRef(null);
   const dispatch = useDispatch();
 
-  const handleMenuItemClick = (index) => {
+  const handleMenuItemClick = (index: number) => {
     setSelectedIndex(index);
     setIsOpen(false);
     dispatch(setSortBy(options[index].key));

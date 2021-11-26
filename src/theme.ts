@@ -29,7 +29,7 @@ export const theme = createTheme({
     error: {
       main: red.A400,
     },
-    bad: {
+    info: {
       main: red[800],
     },
     background: {
@@ -49,11 +49,11 @@ export const theme = createTheme({
         },
       },
     },
-  },
-  overrides: {
     MuiTypography: {
-      root: {
-        textAlign: 'left',
+      styleOverrides: {
+        root: {
+          textAlign: 'left',
+        },
       },
     },
   },

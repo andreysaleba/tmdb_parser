@@ -1,6 +1,6 @@
 import { makeStyles } from '@mui/styles';
 
-export const useStyle = makeStyles((theme) => ({
+export const useStyle = makeStyles(() => ({
   wrapper: {
     display: 'flex',
     flexDirection: 'column',
@@ -56,7 +56,7 @@ export const useStyle = makeStyles((theme) => ({
       width: 40,
       height: 40,
       justifyContent: 'center',
-      color: theme.palette.primary.contrastText,
+      color: '#fff',
       fontWeight: 'bold',
     },
   },

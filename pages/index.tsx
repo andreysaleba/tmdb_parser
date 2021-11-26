@@ -1,3 +1,4 @@
+import type { NextPage } from 'next';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Container } from '@mui/material';
@@ -12,7 +13,7 @@ import { favoriteListSelector } from '../src/effects/favorite/favoriteSelectors'
 import { FilmCard, SortField, FilmPagination, Loader, ErrorComponent } from '../src/components';
 import styles from '../styles/Home.module.css';
 
-export default function Home() {
+const Home: NextPage = () => {
   const dispatch = useDispatch();
   const films = useSelector(filmsSelector);
   const sortBy = useSelector(sortBySelector);
@@ -33,7 +34,7 @@ export default function Home() {
         return (
           <>
             <div className={styles.container}>
-              {films.map(({ title, vote_average, id, release_date, poster_path }) => (
+              {films?.map(({ title, vote_average, id, release_date, poster_path }) => (
                 <FilmCard
                   title={title}
                   year={release_date}
@@ -61,4 +62,6 @@ export default function Home() {
       {body()}
     </Container>
   );
-}
+};
+
+export default Home;

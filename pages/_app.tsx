@@ -1,15 +1,14 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import Head from 'next/head';
+import type { AppProps } from 'next/app';
 import { ThemeProvider } from '@mui/material/styles';
 import { PersistGate } from 'redux-persist/integration/react';
 import CssBaseline from '@mui/material/CssBaseline';
 import { theme } from '../src/theme';
 import { store, persistor } from '../src/store';
 
-export default function MyApp(props) {
-  const { Component, pageProps } = props;
-
+function MyApp({ Component, pageProps }: AppProps) {
   return (
     <React.Fragment>
       <Head>
@@ -27,3 +26,5 @@ export default function MyApp(props) {
     </React.Fragment>
   );
 }
+
+export default MyApp;

@@ -14,9 +14,18 @@ import StarBorderIcon from '@mui/icons-material/StarBorder';
 import { addToFavoriteList, removeFromFavoriteList } from '../../effects/favorite/favoriteSlice';
 import { useStyle } from './style';
 
-const url = process.env.NEXT_PUBLIC_BASE_URL;
+const url = process.env.NEXT_PUBLIC_MAIN_URL;
 
-const Component = ({ title, rait, year, id, src, isFavorite }) => {
+interface IComponent {
+  title: string;
+  rait: number;
+  year: string;
+  id: number;
+  src: string;
+  isFavorite: boolean;
+}
+
+const Component: React.FC<IComponent> = ({ title, rait, year, id, src, isFavorite }) => {
   const dispatch = useDispatch();
   const styles = useStyle();
 
@@ -36,7 +45,7 @@ const Component = ({ title, rait, year, id, src, isFavorite }) => {
   const getRaitColor = () => {
     if (rait * 10 >= 70) return 'success';
     if (rait * 10 > 50 && rait * 10 < 70) return 'warning';
-    return 'bad';
+    return 'info';
   };
 
   return (
@@ -53,14 +62,14 @@ const Component = ({ title, rait, year, id, src, isFavorite }) => {
           <div className={styles.placeholder} />
         )}
       </CardActionArea>
-      <CardContent className={styles.content}>
+      <CardContent>
         <Typography variant="h5" component="h5">
           {title}
         </Typography>
       </CardContent>
       <CardActions sx={{ justifyContent: 'space-between', paddingX: 2, color: 'rgba(0,0,0,0.6)' }}>
         <Typography variant="h6" component="p">
-          {moment(year).format('LL')}
+          {year ? moment(year).format('LL') : 'unknown'}
         </Typography>
         <IconButton aria-label="star" size="large" onClick={changeStatusFavorite}>
           {isFavorite ? <StarIcon color="error" /> : <StarBorderIcon color="error" />}
@@ -88,4 +97,5 @@ const Component = ({ title, rait, year, id, src, isFavorite }) => {
     </Card>
   );
 };
+
 export const FilmCard = React.memo(Component);

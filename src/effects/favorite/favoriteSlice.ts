@@ -1,6 +1,10 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
-const initialState = {
+interface IinitialState {
+  favoriteList: number[]
+}
+
+const initialState:IinitialState  = {
   favoriteList: [],
 };
 

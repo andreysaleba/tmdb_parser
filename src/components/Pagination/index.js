@@ -1,0 +1,1 @@
+export { FilmPagination } from './FilmPagination';
